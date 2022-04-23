@@ -15,7 +15,9 @@ export default function EditUser() {
     useEffect(() => {
         getUserById()
     }, []);
-
+    useEffect(() => {
+      updateUser()
+    }, []);
 
     async function getUserById() {
         const response = await fetch(`http://localhost:5000/user/${id}`)
