@@ -21,8 +21,8 @@ export default function EditUser() {
         const response = await fetch(`http://localhost:5000/user/${id}`)
         const data = await response.json()
         console.log(data)
-        setname(data[0].firstName)
-        setlastname(data[0].lastName)
+        setname(data[0].name)
+        setlastname(data[0].lastname)
         setemail(data[0].email)
     }
 
@@ -33,7 +33,7 @@ export default function EditUser() {
             lastname: lastname,
             email: email,
         }
-        await axios.patch(`http://localhost:5000/user/${id}`, newperson)
+        await axios.put(`http://localhost:5000/user/${id}`, newperson)
         //setname("")
       //  setlastname("")
       //  setemail("")

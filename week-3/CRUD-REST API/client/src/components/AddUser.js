@@ -23,7 +23,7 @@ async function postData(e){
 await  fetch('http://localhost:5000/users', {
              method: "POST",
              body: JSON.stringify(newperson),
-             headers: {"Content-type": "application/text; charset=UTF-8",
+             headers: {"Content-type": "application/json; charset=UTF-8",
              'Accept': 'application/json'}
              })
             .then(response => response.json()) 
