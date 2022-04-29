@@ -26,34 +26,34 @@ db.query("SELECT * FROM users", (err, result) => {
 });
  }
 
-export const createUser = (req, res) => {
+export  const  createUser = (req, res) => {
   const name = req.body.name;
   const lastname = req.body.lastname
   const email = req.body.email
  // users.push({ ...user, id: users.length + 1 })
  // res.send(users)
- db.query(
+  db.query(
   "INSERT INTO users (name, lastname, email) VALUES (?,?,?)",
   [name, lastname, email],
   (err, result) => {
     if (err) {
       console.log(err);
     } else {
-      res.send("Values Inserted");
+      res.send(result);
     }
   }
 );
 }
-//  export const getUser = (req, res) => {
-//   const id = req.params.id;
-//  db.query("SELECT  FROM users WHERE id = ? ", (err, result) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     res.send(result);
-//   }
-// });
-//  }
+ export const getUser = (req, res) => {
+  const {id} = req.params;
+ db.query(`SELECT * FROM users WHERE id = ${id}` , (err, result) => {
+  if (err) {
+    console.log(err);
+  } else {
+    res.send(result);
+  }
+});
+  }
 
  export const deleteUser = (req, res) => {
   const id = req.params.id;
@@ -69,10 +69,10 @@ export const updateUser = (req, res) => {
   const  name = req.body.name
   const  lastname = req.body.lastname
   const  email = req.body.email
-  const id = req.params.id;
+  const {id} = req.params;
   db.query(
-    "UPDATE users SET name = ? lastname = ? email = ? WHERE id = ?",
-    [name,lastname,email,id],
+    `UPDATE users SET name =${name} lastname =${lastname} email = ${email} WHERE id = ${id}`,
+    
     (err, result) => {
       if (err) {
         console.log(err);
@@ -81,7 +81,7 @@ export const updateUser = (req, res) => {
       }
     }
   );
-  res.send("sss")
+  res.send(name,lastname,email);
  }
 
 
