@@ -22,12 +22,12 @@ router.post("/students", async (req, res)=>{
 router.put("/students/:id", async (req, res)=>{
     const studentId = req.params.id;
     const existingStudent = req.body;
-    const updatedStudent = await studentService.updatedStudent(studentId, existingStudent);
+    const updatedStudent = await studentService.updateStudent(studentId, existingStudent);
     
     res.status(200).send(updatedStudent);
 })
 
-router.delete("/:id", async (req, res)=>{
+router.delete("/students/:id", async (req, res)=>{
     const studentId = req.params.id;
     await studentService.removeStudent(studentId);
     res.status(200).send(null);

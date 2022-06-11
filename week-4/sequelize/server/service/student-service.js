@@ -14,5 +14,5 @@ export async function removeStudent(studentId){
   return await studentRepository.remove(studentId);
 }
 export async function updateStudent(studentId, existingStudent){
-  return await customerRepository.update(studentId, existingStudent);
+  return await studentRepository.update(studentId, existingStudent);
 }
